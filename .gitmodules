@@ -1,0 +1,8 @@
+[submodule "gtest"]
+	path = gtest
+	url = https://github.com/google/googletest.git
+	ignore = dirty
+[submodule "micropython"]
+	path = micropython
+	url = https://github.com/micropython/micropython.git
+	ignore = dirty

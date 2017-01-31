@@ -1,0 +1,93 @@
+include_directories(${CMAKE_SOURCE_DIR}/micropython/stmhal)
+include_directories(${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/inc)
+include_directories(${CMAKE_SOURCE_DIR}/micropython/stmhal/cmsis)
+include_directories(${CMAKE_SOURCE_DIR}/micropython/lib/cmsis/inc)
+
+set(stm32hal_SOURCE
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/main.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/system_stm32.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/stm32_it.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/usbd_conf.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/usbd_desc.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/usbd_cdc_interface.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/usbd_hid_interface.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/usbd_msc_storage.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/mphalport.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/irq.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/pendsv.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/systick.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/timer.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/led.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/pin.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/pin_defs_stmhal.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/pin_named_pins.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/bufhelper.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/dma.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/i2c.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/spi.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/uart.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/can.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/usb.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/wdt.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/gchelper.s
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/gccollect.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/pybstdio.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/help.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/input.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/machine_i2c.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/modmachine.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/modpyb.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/modstm.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/moduos.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/modutime.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/modusocket.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/modnetwork.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/import.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/extint.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/usrsw.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/rng.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/rtc.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/flash.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/storage.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/builtin_open.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/sdcard.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/fatfs_port.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/lcd.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/accel.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/servo.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/dac.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/adc.c)
+
+set(stm32f4hal_SOURCE
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_adc.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_adc_ex.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_can.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_cortex.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_dac.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_dac_ex.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_dma.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_flash.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_flash_ex.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_gpio.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_i2c.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_pcd.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_pcd_ex.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_pwr.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_pwr_ex.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_rcc.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_rcc_ex.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_rng.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_rtc.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_rtc_ex.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_sd.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_spi.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_tim.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_tim_ex.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_hal_uart.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_ll_sdmmc.c
+        ${CMAKE_SOURCE_DIR}/micropython/stmhal/hal/f4/src/stm32f4xx_ll_usb.c)
+
+add_library(stm32hal ${stm32hal_SOURCE})
+add_library(stm32f4hal ${stm32f4hal_SOURCE})
+target_link_libraries(stm32hal stm32f4hal)
